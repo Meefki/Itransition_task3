@@ -54,7 +54,7 @@ internal class Help
     private void FillViewContent(Grid view, IList<string> headers)
     {
         List<Cell[]> content = new();
-        for (int i = 1; i < headers.Count - 1; i++)
+        for (int i = 1; i < headers.Count; i++)
         {
             Cell[] row = new Cell[headers.Count];
 

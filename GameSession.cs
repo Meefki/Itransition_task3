@@ -93,7 +93,7 @@ namespace task3
             int roundResult = _rules.CalculateWinner(compMove, userMove);
             string winnerMessage = ConvertResultToString(roundResult);
 
-            _console.WriteInfoMessage(winnerMessage);
+            _console.WriteInfoMessage(winnerMessage, ConsoleColor.Green);
 
             string keyStr = BitConverter.ToString(key).Replace("-", "");
             _console.WriteInfoMessage($"HMAC key: {keyStr}", ConsoleColor.Yellow);
