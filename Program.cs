@@ -9,8 +9,10 @@ internal class Program
     {
         _console = new();
 
-        if (!ValidateInput(args))
+        string errorMsg = ValidateInput(args);
+        if (!string.IsNullOrEmpty(errorMsg))
         {
+            _console.WriteErrorMessage(errorMsg);
             _console.WriteInfoMessage("Press any key to close the programm...", ConsoleColor.White);
             Console.ReadKey();
             return;
@@ -46,26 +48,23 @@ internal class Program
         return false;
     }
 
-    private static bool ValidateInput(string[] args)
+    private static string ValidateInput(string[] args)
     {
         if (args.Length < 3)
         {
-            _console.WriteErrorMessage($"Amount of input parameters should be more then 2 ({args.Length} now)!");
-            return false;
+            return $"Amount of input parameters should be more then 2 ({args.Length} now)!";
         }
 
         if (args.Length % 2 != 1)
         {
-            _console.WriteErrorMessage($"Amount of input parameters shouldn't be even!");
-            return false;
+            return $"Amount of input parameters shouldn't be even!";
         }
 
         if (IsContainDuplicates(args))
         {
-            _console.WriteErrorMessage("The input parameters contain duplicates!");
-            return false;
+            return "The input parameters contain duplicates!";
         }
 
-        return true;
+        return string.Empty;
     }
 }
