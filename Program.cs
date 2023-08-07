@@ -7,8 +7,6 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        args = new string[] { "Rock", "Paper", "Scissors" };
-
         ValidateInput(args);
         Init(args);
 
