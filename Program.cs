@@ -10,7 +10,12 @@ internal class Program
         _console = new();
 
         if (!ValidateInput(args))
+        {
+            _console.WriteInfoMessage("Press any key to close the programm...", ConsoleColor.White);
+            Console.ReadKey();
             return;
+        }
+            
 
         _gameSession = new(args);
 
@@ -46,21 +51,18 @@ internal class Program
         if (args.Length < 3)
         {
             _console.WriteErrorMessage($"Amount of input parameters should be more then 2 ({args.Length} now)!");
-            Console.ReadKey();
             return false;
         }
 
         if (args.Length % 2 != 1)
         {
             _console.WriteErrorMessage($"Amount of input parameters shouldn't be even!");
-            Console.ReadKey();
             return false;
         }
 
         if (IsContainDuplicates(args))
         {
             _console.WriteErrorMessage("The input parameters contain duplicates!");
-            Console.ReadKey();
             return false;
         }
 
