@@ -7,9 +7,12 @@ internal class Program
 
     private static void Main(string[] args)
     {
+        _console = new();
+
         if (!ValidateInput(args))
             return;
-        Init(args);
+
+        _gameSession = new(args);
 
         bool isFirstRound = true;
 
@@ -23,12 +26,6 @@ internal class Program
             if (!isContinue)
                 return;
         }
-    }
-
-    private static void Init(string[] args)
-    {
-        _gameSession = new(args);
-        _console = new();
     }
 
     private static bool IsContainDuplicates(string[] args)
