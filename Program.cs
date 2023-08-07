@@ -7,7 +7,8 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        ValidateInput(args);
+        if (!ValidateInput(args))
+            return;
         Init(args);
 
         bool isFirstRound = true;
